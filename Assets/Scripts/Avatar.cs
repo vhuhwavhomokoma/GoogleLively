@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 public class Avatar : MonoBehaviour
 {
 
-    public float speed = 5f;
-   
+    public float speed = 7f;
+    private float turnspeed = 60f;
+    private float verticalInput;
+    private float horizontalInput;
+    public bool isWalking = false;
+    private Animator animator;
+
 
     void Start()
     {
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,6 +27,20 @@ public class Avatar : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
+        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+
+        isWalking = (Mathf.Abs(verticalInput) > 0.001f);
+        animator.SetBool("IsMoving", isWalking);
+
+        transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
+
+        transform.Rotate(Vector3.up * Time.deltaTime * horizontalInput * turnspeed);
+
+        
+
+
 
     }
 }
