@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AvatarPhone.unity
     guid: ef10ec5faf57db04aa74c547dc0b9ce4
+  - enabled: 1
+    path: Assets/Scenes/VirtualMarket.unity
+    guid: 04f562bad9cc6d04390a899d9ab23c3d
   m_configObjects: {}
