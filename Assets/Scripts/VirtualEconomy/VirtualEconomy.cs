@@ -5,10 +5,13 @@ using UnityEngine;
 using UnityEditor;
 
 
+
 public class VirtualEconomy : MonoBehaviour
 {
 
     private int accountbalance = 300;
+
+    public GameObject MainObject;
 
     public TextMeshProUGUI textMeshProUGUI;
 
@@ -25,14 +28,30 @@ public class VirtualEconomy : MonoBehaviour
 
     }
 
+    public void Sell()
+    {
+        string pricetext = textMeshProUGUI.text;
+        int price = int.Parse(pricetext.Substring(2));
+        CurrencyManager currencyManager = new CurrencyManager(accountbalance);
+        currencyManager.AddGoldCoins(price);
+        if (removeSoldInventory())
+        {
+            Destroy(MainObject);
+            Debug.Log("SOLD");
+        }
+        else
+        {
+            Debug.Log("NOT SOLD");
+        }
+        
+    }
+
     private void accessPurchasedInventory()
     {
         try
         {
             
             string destinationFolder = "Assets/Prefabs/UserInventory";
-
-            Debug.Log(inventoryitems.Count);
 
 
             foreach (GameObject item in inventoryitems)
@@ -59,6 +78,27 @@ public class VirtualEconomy : MonoBehaviour
         }
 
 }
+
+    private bool removeSoldInventory()
+    {
+        string prefabsFolder = "Assets/Prefabs/UserInventory";
+      
+        string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { prefabsFolder });
+
+        foreach (string guid in guids)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
+            if (prefab != null && prefab.name == itemName.text)
+            {
+                AssetDatabase.DeleteAsset(assetPath);
+                return true;
+            }
+        }
+
+        return false;
+
+    }
 
     private void Buy(int price)
     {
