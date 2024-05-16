@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEditor;
+using System;
+using Microsoft.Data.SqlClient;
 
 
 
@@ -19,6 +21,10 @@ public class VirtualEconomy : MonoBehaviour
 
     public List<GameObject> inventoryitems;
 
+    void Start()
+    {
+       
+    }
 
     public void Purchase()
     {
@@ -100,6 +106,8 @@ public class VirtualEconomy : MonoBehaviour
 
     }
 
+
+
     private void Buy(int price)
     {
         CurrencyManager currencyManager = new CurrencyManager(accountbalance);
@@ -117,6 +125,8 @@ public class VirtualEconomy : MonoBehaviour
 
     }
 
+    
+       
 
 
 }
