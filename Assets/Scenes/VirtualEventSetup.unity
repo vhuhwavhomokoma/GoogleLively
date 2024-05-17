@@ -368,7 +368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &169177902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2525,6 +2525,7 @@ GameObject:
   - component: {fileID: 1585724456}
   - component: {fileID: 1585724455}
   - component: {fileID: 1585724454}
+  - component: {fileID: 1585724457}
   m_Layer: 5
   m_Name: LiveStreamSelect
   m_TagString: Untagged
@@ -2595,7 +2596,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1585724455}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1585724457}
+        m_TargetAssemblyTypeName: VirtualEventPlanner, Assembly-CSharp
+        m_MethodName: ToggleLiveStreamField
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1585724457}
+        m_TargetAssemblyTypeName: VirtualEventPlanner, Assembly-CSharp
+        m_MethodName: toggleMusicButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1585724455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2634,6 +2659,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585724452}
   m_CullTransparentMesh: 1
+--- !u!114 &1585724457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585724452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70259524f853eb42a0b453d330680b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livestreamurl: {fileID: 169177901}
+  livestreambutton: {fileID: 1585724452}
+  musicbutton: {fileID: 1721049804}
+  eventName: {fileID: 1903904781}
+  date: {fileID: 94184865}
+  time: {fileID: 216387745}
 --- !u!1 &1721049804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,6 +2689,7 @@ GameObject:
   - component: {fileID: 1721049808}
   - component: {fileID: 1721049807}
   - component: {fileID: 1721049806}
+  - component: {fileID: 1721049809}
   m_Layer: 5
   m_Name: MusicSelect
   m_TagString: Untagged
@@ -2716,7 +2760,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1721049807}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1721049809}
+        m_TargetAssemblyTypeName: VirtualEventPlanner, Assembly-CSharp
+        m_MethodName: toggleLiveStreamButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1721049807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2755,6 +2811,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721049804}
   m_CullTransparentMesh: 1
+--- !u!114 &1721049809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721049804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70259524f853eb42a0b453d330680b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livestreamurl: {fileID: 169177901}
+  livestreambutton: {fileID: 1585724452}
+  musicbutton: {fileID: 1721049804}
+  eventName: {fileID: 1903904781}
+  date: {fileID: 94184865}
+  time: {fileID: 216387745}
 --- !u!1 &1848588887
 GameObject:
   m_ObjectHideFlags: 0
@@ -3281,6 +3355,7 @@ GameObject:
   - component: {fileID: 2144821999}
   - component: {fileID: 2144821998}
   - component: {fileID: 2144821997}
+  - component: {fileID: 2144822000}
   m_Layer: 5
   m_Name: CreateEvent
   m_TagString: Untagged
@@ -3351,7 +3426,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2144821998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2144822000}
+        m_TargetAssemblyTypeName: VirtualEventPlanner, Assembly-CSharp
+        m_MethodName: ProceedToEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2144821998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3390,6 +3477,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144821995}
   m_CullTransparentMesh: 1
+--- !u!114 &2144822000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144821995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70259524f853eb42a0b453d330680b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livestreamurl: {fileID: 169177901}
+  livestreambutton: {fileID: 1585724452}
+  musicbutton: {fileID: 1721049804}
+  eventName: {fileID: 1903904781}
+  date: {fileID: 94184865}
+  time: {fileID: 216387745}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
