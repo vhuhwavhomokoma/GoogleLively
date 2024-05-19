@@ -20,6 +20,11 @@ public class AccountManagement : MonoBehaviour
         
     }
 
+    public void OpenURL()
+    {
+        Application.OpenURL("https://www.example.com");
+    }
+
     IEnumerator GetRequest(string url)
     {
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
@@ -34,7 +39,7 @@ public class AccountManagement : MonoBehaviour
         {
             string recv = webRequest.downloadHandler.text;
            
-            accountbalance.text = recv;
+            accountbalance.text = "L 100";
         }
     }
 }

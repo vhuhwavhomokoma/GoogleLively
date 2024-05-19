@@ -43,7 +43,7 @@ public class InventoryManagement : MonoBehaviour
             // Instantiate a new content item from the prefab
             GameObject newItem = Instantiate(contentPrefab, contentParent);
             TextMeshProUGUI[] allTextMeshProChildren = newItem.GetComponentsInChildren<TextMeshProUGUI>();
-            Debug.Log(allTextMeshProChildren.Length);
+            
 
 
             allTextMeshProChildren[0].text = items[i].name;

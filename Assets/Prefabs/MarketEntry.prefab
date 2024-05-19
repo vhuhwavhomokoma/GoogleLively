@@ -284,9 +284,8 @@ MonoBehaviour:
   textMeshProUGUI: {fileID: 6227558425273593885}
   itemName: {fileID: 110602871784568641}
   inventoryitems:
-  - {fileID: 1830421572321717154, guid: af872b04269986143906a126ca9ff444, type: 3}
-  - {fileID: 4327680794412319598, guid: 7699f5af06713974ba61777a8a830f6e, type: 3}
-  - {fileID: 4569856451172614560, guid: 54a1d2aa299948d4386f320102e514a9, type: 3}
+  - {fileID: 5626706108481955418, guid: 355f0f3f8c2463f4d8bed401784f063f, type: 3}
+  - {fileID: 8683862293970279672, guid: b9f258a086096d24aa7861fa20deed65, type: 3}
 --- !u!1 &3870431050004196227
 GameObject:
   m_ObjectHideFlags: 0

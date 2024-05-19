@@ -6,6 +6,8 @@ TagManager:
   tags:
   - EntryDescription
   - EntryPrice
+  - Fridge
+  - Cupboard
   layers:
   - Default
   - TransparentFX
