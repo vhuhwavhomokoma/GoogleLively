@@ -21,7 +21,7 @@ public class UserInventoryManagement : MonoBehaviour
 
     void PopulateScrollView()
     {
-        string[] PriceList = { "L 100", "L 200", "L 300" };
+        string[] PriceList = { "L 100", "L 200", "L 300", "L 100", "L 240", "L 200", "L 100" };
         string prefabsFolder = "Assets/Prefabs/UserInventory";
         List<GameObject> items = new List<GameObject>();
         string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { prefabsFolder });

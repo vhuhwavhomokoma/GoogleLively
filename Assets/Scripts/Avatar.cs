@@ -28,11 +28,12 @@ public class Avatar : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+       
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
-        isWalking = (Mathf.Abs(verticalInput) > 0.001f);
-        animator.SetBool("IsMoving", isWalking);
+        isWalking = (Mathf.Abs(verticalInput) > 0.0001f);
+        animator.SetBool("IsWalking", isWalking);
 
         transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
 

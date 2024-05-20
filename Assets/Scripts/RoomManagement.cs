@@ -9,7 +9,18 @@ public class RoomManagement : MonoBehaviour
     public Transform cupboardposition;
 
     public Transform fridgepostion;
-    // Start is called before the first frame update
+
+    public Transform canvasposition1;
+
+    public Transform canvasposition2;
+
+    public Transform cabinetposition;
+
+    public Transform chairposition;
+
+    public Transform stoveposition;
+
+   
     void Start()
     {
         populateRoom();
@@ -42,6 +53,36 @@ public class RoomManagement : MonoBehaviour
             {
                 Instantiate(items[i], fridgepostion);
             }
+
+
+            if (items[i].CompareTag("Cabinet"))
+            {
+                Instantiate(items[i], cabinetposition);
+            }
+
+
+            if (items[i].CompareTag("Canvas1"))
+            {
+                Instantiate(items[i], canvasposition1);
+            }
+
+
+            if (items[i].CompareTag("Canvas2"))
+            {
+                Instantiate(items[i], canvasposition2);
+            }
+
+            if (items[i].CompareTag("Chair"))
+            {
+                Instantiate(items[i], chairposition);
+            }
+
+            if (items[i].CompareTag("Stove"))
+            {
+                Instantiate(items[i], stoveposition);
+            }
+
+
         }
     }
 }

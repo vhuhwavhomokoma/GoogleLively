@@ -321,6 +321,11 @@ MonoBehaviour:
   items:
   - {fileID: 5626706108481955418, guid: 355f0f3f8c2463f4d8bed401784f063f, type: 3}
   - {fileID: 8683862293970279672, guid: b9f258a086096d24aa7861fa20deed65, type: 3}
+  - {fileID: 1830421572321717154, guid: af872b04269986143906a126ca9ff444, type: 3}
+  - {fileID: 1717429913565124302, guid: 29eb9cdec523f4944b46fcfae81dc9c8, type: 3}
+  - {fileID: 3529715222844787653, guid: ce0bc08e90169b64a82b286ba042f677, type: 3}
+  - {fileID: 1929367146843536, guid: 4f9e8d17d08a3d346909d5dc0f404d80, type: 3}
+  - {fileID: 1963118065990805654, guid: 452921da7fe17904da8c1d34c235dee4, type: 3}
   itemSpacing: 120
 --- !u!1 &547595821
 GameObject:
@@ -472,8 +477,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1849045847}
   m_HandleRect: {fileID: 1849045846}
   m_Direction: 2
-  m_Value: 0.000000115793014
-  m_Size: 0.47633344
+  m_Value: 0.49100426
+  m_Size: 0.121611334
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -781,7 +786,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1558978452}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 0.9890348
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -856,8 +861,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 527.10565}
-  m_SizeDelta: {x: 0, y: 1006.5674}
+  m_AnchoredPosition: {x: 0, y: 1762.7096}
+  m_SizeDelta: {x: 9.0381, y: 3942.5742}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1401156324
 GameObject:

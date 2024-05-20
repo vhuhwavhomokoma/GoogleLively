@@ -8,6 +8,11 @@ TagManager:
   - EntryPrice
   - Fridge
   - Cupboard
+  - Canvas1
+  - Canvas2
+  - Stove
+  - Chair
+  - Cabinet
   layers:
   - Default
   - TransparentFX

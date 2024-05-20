@@ -376,8 +376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 260.18533}
-  m_SizeDelta: {x: 0, y: 657.1846}
+  m_AnchoredPosition: {x: 0, y: 2389.6067}
+  m_SizeDelta: {x: 0, y: 2845.8013}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &819247729
 GameObject:
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentPrefab: {fileID: 522177910843042943, guid: 4b7ad8a0f2b4a094ab94fa2e89679506, type: 3}
   contentParent: {fileID: 793865868}
-  itemSpacing: 200
+  itemSpacing: 120
 --- !u!1 &1410258227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,8 +1271,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1751150634}
   m_HandleRect: {fileID: 1751150633}
   m_Direction: 2
-  m_Value: -0.0000028150089
-  m_Size: 0.60409206
+  m_Value: 0.02417288
+  m_Size: 0.13950376
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

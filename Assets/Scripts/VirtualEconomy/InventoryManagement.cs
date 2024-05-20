@@ -28,7 +28,7 @@ public class InventoryManagement : MonoBehaviour
 
     void PopulateScrollView()
     {
-        string[] PriceList = {"L 100","L 200","L 300" };
+        string[] PriceList = {"L 100","L 200","L 300", "L 200", "L 500", "L 200", "L 150" };
         
 
         // Loop through each item in the list
