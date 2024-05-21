@@ -6,7 +6,7 @@ public class MusicController : MonoBehaviour
 {
     public AudioClip[] musicTracks;
     private AudioSource audioSource;
-    private int currentTrackIndex = 0;
+    private int TrackIndex = 0;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class MusicController : MonoBehaviour
 
         if (musicTracks.Length > 0)
         {
-            PlayTrack(currentTrackIndex);
+            PlayTrack(TrackIndex);
         }
     }
 
@@ -55,14 +55,14 @@ public class MusicController : MonoBehaviour
 
     public void NextTrack()
     {
-        currentTrackIndex = (currentTrackIndex + 1) % musicTracks.Length;
-        PlayTrack(currentTrackIndex);
+        TrackIndex = (TrackIndex + 1) % musicTracks.Length;
+        PlayTrack(TrackIndex);
     }
 
     public void PlayPreviousTrack()
     {
-        currentTrackIndex = (currentTrackIndex - 1 + musicTracks.Length) % musicTracks.Length;
-        PlayTrack(currentTrackIndex);
+        TrackIndex = (TrackIndex - 1 + musicTracks.Length) % musicTracks.Length;
+        PlayTrack(TrackIndex);
     }
 
     

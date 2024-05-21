@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class UserInventoryManagement : MonoBehaviour
 {
-    public GameObject contentPrefab; // Reference to the prefab of your content item
-    public Transform contentParent; // Reference to the Content transform of the Scroll View
+    public GameObject userinventoryEntry; 
+    public Transform entryParent; 
 
- // List of items to display in the Scroll View
+
 
     public float itemSpacing = 200f;
-    // Start is called before the first frame update
+    
     void Start()
     {
         PopulateScrollView();
@@ -21,7 +21,7 @@ public class UserInventoryManagement : MonoBehaviour
 
     void PopulateScrollView()
     {
-        string[] PriceList = { "L 100", "L 200", "L 300", "L 100", "L 240", "L 200", "L 100" };
+        string[] PriceList = { "L 100", "L 200", "L 300", "L 200", "L 500", "L 200", "L 150" };
         string prefabsFolder = "Assets/Prefabs/UserInventory";
         List<GameObject> items = new List<GameObject>();
         string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { prefabsFolder });
@@ -39,17 +39,17 @@ public class UserInventoryManagement : MonoBehaviour
 
   
     
-        // Loop through each item in the list
+        
         for (int i = 0; i < items.Count; i++)
         {
             // Calculate the position for the new item based on index
-            float yOffset = i * 2 * itemSpacing; // Adjust this calculation based on your layout needs
+            float yOffset = i * 2 * itemSpacing; 
 
             Texture previewTexture = AssetPreview.GetAssetPreview(items[i]);
 
 
-            // Instantiate a new content item from the prefab
-            GameObject newItem = Instantiate(contentPrefab, contentParent);
+            
+            GameObject newItem = Instantiate(userinventoryEntry, entryParent);
             TextMeshProUGUI[] allTextMeshProChildren = newItem.GetComponentsInChildren<TextMeshProUGUI>();
             
 
@@ -74,9 +74,6 @@ public class UserInventoryManagement : MonoBehaviour
                 itemRect.anchoredPosition = new Vector2(-300, yOffset);
             }
 
-
-
-            // Optionally, you can add more customization to the new item here
         }
 
     }

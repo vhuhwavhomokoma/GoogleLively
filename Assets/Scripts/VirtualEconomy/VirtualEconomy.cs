@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEditor;
-using System;
-using Microsoft.Data.SqlClient;
 
 
 
@@ -30,7 +28,7 @@ public class VirtualEconomy : MonoBehaviour
     {
         string pricetext = textMeshProUGUI.text;
         int price = int.Parse(pricetext.Substring(2));
-        Buy(price);
+        bool status = Buy(price);
 
     }
 
@@ -38,17 +36,14 @@ public class VirtualEconomy : MonoBehaviour
     {
         string pricetext = textMeshProUGUI.text;
         int price = int.Parse(pricetext.Substring(2));
-        CurrencyManager currencyManager = new CurrencyManager(accountbalance);
+        Currency currencyManager = new Currency(accountbalance);
         currencyManager.AddGoldCoins(price);
         if (removeSoldInventory())
         {
             Destroy(MainObject);
-            Debug.Log("SOLD");
+            
         }
-        else
-        {
-            Debug.Log("NOT SOLD");
-        }
+       
         
     }
 
@@ -65,22 +60,21 @@ public class VirtualEconomy : MonoBehaviour
                 if (item.name == itemName.text)
                 {
                     GameObject purchasedObject = Instantiate(item);
-                    string destinationPath = destinationFolder + "/" + purchasedObject.name + ".prefab";
+                    string destinationPath = destinationFolder + "/" + itemName.text + ".prefab";
                     PrefabUtility.SaveAsPrefabAsset(purchasedObject, destinationPath);
 
-                    // Destroy the temporary copied GameObject from the scene
+               
                     DestroyImmediate(purchasedObject);
 
-                    // Refresh the AssetDatabase to make sure the new asset is visible in the Editor
+                    
                     AssetDatabase.Refresh();
 
-                    Debug.Log("GameObject copied and saved as: " + destinationPath);
                 }
             }
 
-        }catch (System.Exception ex)
+        }catch (System.Exception)
         {
-            Debug.Log(ex.Message); 
+         
         }
 
 }
@@ -108,19 +102,19 @@ public class VirtualEconomy : MonoBehaviour
 
 
 
-    private void Buy(int price)
+    public bool Buy(int price)
     {
-        CurrencyManager currencyManager = new CurrencyManager(accountbalance);
+        Currency currencyManager = new Currency(accountbalance);
         
 
         if (currencyManager.SubtractGoldCoins(price))
         {
             accessPurchasedInventory();
-            Debug.Log("Purchase successful");
+            return true; //Purchase successful
         }
         else
         {
-            Debug.Log("Insufficient Funds");
+            return false; //Insufficient Funds
         }
 
     }

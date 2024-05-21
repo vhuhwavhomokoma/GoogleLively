@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RoomManagement : MonoBehaviour
 {
-
+    //The positions of items in the user's virtual room
     public Transform cupboardposition;
 
     public Transform fridgepostion;
@@ -26,10 +26,11 @@ public class RoomManagement : MonoBehaviour
         populateRoom();
     }
 
+    //Instatiate Room user inventory items to populate the Virtual Room
     private void populateRoom()
     {
         string prefabsFolder = "Assets/Prefabs/UserInventory";
-        List<GameObject> items = new List<GameObject>();
+        List<GameObject> inventoryItems = new List<GameObject>();
         string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { prefabsFolder });
 
         foreach (string guid in guids)
@@ -38,48 +39,48 @@ public class RoomManagement : MonoBehaviour
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
             if (prefab != null)
             {
-                items.Add(prefab);
+                inventoryItems.Add(prefab);
             }
         }
 
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
-            if (items[i].CompareTag("Cupboard"))
+            if (inventoryItems[i].CompareTag("Cupboard"))
             {
-                Instantiate(items[i], cupboardposition);
+                Instantiate(inventoryItems[i], cupboardposition);
             }
 
-            if (items[i].CompareTag("Fridge"))
+            if (inventoryItems[i].CompareTag("Fridge"))
             {
-                Instantiate(items[i], fridgepostion);
-            }
-
-
-            if (items[i].CompareTag("Cabinet"))
-            {
-                Instantiate(items[i], cabinetposition);
+                Instantiate(inventoryItems[i], fridgepostion);
             }
 
 
-            if (items[i].CompareTag("Canvas1"))
+            if (inventoryItems[i].CompareTag("Cabinet"))
             {
-                Instantiate(items[i], canvasposition1);
+                Instantiate(inventoryItems[i], cabinetposition);
             }
 
 
-            if (items[i].CompareTag("Canvas2"))
+            if (inventoryItems[i].CompareTag("Canvas1"))
             {
-                Instantiate(items[i], canvasposition2);
+                Instantiate(inventoryItems[i], canvasposition1);
             }
 
-            if (items[i].CompareTag("Chair"))
+
+            if (inventoryItems[i].CompareTag("Canvas2"))
             {
-                Instantiate(items[i], chairposition);
+                Instantiate(inventoryItems[i], canvasposition2);
             }
 
-            if (items[i].CompareTag("Stove"))
+            if (inventoryItems[i].CompareTag("Chair"))
             {
-                Instantiate(items[i], stoveposition);
+                Instantiate(inventoryItems[i], chairposition);
+            }
+
+            if (inventoryItems[i].CompareTag("Stove"))
+            {
+                Instantiate(inventoryItems[i], stoveposition);
             }
 
 

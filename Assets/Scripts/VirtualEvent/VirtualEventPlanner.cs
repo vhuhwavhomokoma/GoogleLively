@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VirtualEventPlanner : MonoBehaviour
 {
@@ -18,13 +19,20 @@ public class VirtualEventPlanner : MonoBehaviour
 
     public TMP_InputField time;
 
-    private bool checkbool = false;
+    private bool checkstream = false;
+
+    private bool checkmusic = false;
 
     private void Update()
     {
-        if ((musicbutton.activeSelf == true && livestreambutton.activeSelf == false) || (musicbutton.activeSelf == false && livestreambutton.activeSelf == true))
+        if ((musicbutton.activeSelf == true && livestreambutton.activeSelf == false) )
         {
-            checkbool = true;
+            checkmusic = true;
+        }
+
+        if ((musicbutton.activeSelf == false && livestreambutton.activeSelf == true))
+        {
+            checkstream = true;
         }
         
     }
@@ -61,16 +69,27 @@ public class VirtualEventPlanner : MonoBehaviour
         
         if (eventName.text!="" || date.text!="" || time.text !="")
         {
-            if (checkbool)
+            if (checkstream)
             {
-                Debug.Log("PROCEED TO EVENT");
+                SceneManager.LoadScene(7);
             }
-         
-            
+
+            if (checkmusic)
+            {
+                SceneManager.LoadScene(8);
+            }
+
+
+
         }
       
 
         
+    }
+
+    public void returnToAvatarPhone()
+    {
+        SceneManager.LoadScene(2);
     }
 
 }

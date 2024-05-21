@@ -6,36 +6,31 @@ using UnityEngine.Networking;
 
 public class AccountManagement : MonoBehaviour
 {
-    public TextMeshProUGUI accountbalance;
-    private string apiUrl = "https://libraryweb4.azurewebsites.net/api/Your";
-    // Start is called before the first frame update
+    public TextMeshProUGUI accountbalance; // Account balace displayed on UI
+    private string apiUrl = "https://libraryweb4.azurewebsites.net/api/Your"; //API Gateway to database
+    
+
     void Start()
     {
         StartCoroutine(GetRequest(apiUrl));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
+    //Transition to payment gate
     public void OpenURL()
     {
         Application.OpenURL("https://www.example.com");
     }
 
+    //Retrieve the value of the account balance from the databse
     IEnumerator GetRequest(string url)
     {
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
 
         yield return webRequest.SendWebRequest();
 
-        if (webRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.Log(": Error: " + webRequest.error);
-        }
-        else
+        //Check for errors in connection
+        if (webRequest.result != UnityWebRequest.Result.ConnectionError)
         {
             string recv = webRequest.downloadHandler.text;
            

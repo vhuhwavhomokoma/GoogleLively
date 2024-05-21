@@ -9,12 +9,13 @@ public class InventoryManagement : MonoBehaviour
 {
 
 
-    public GameObject contentPrefab; // Reference to the prefab of your content item
-    public Transform contentParent; // Reference to the Content transform of the Scroll View
+    public GameObject marketentry;
+    
+    public Transform entryParent; 
 
-    public List<GameObject> items; // List of items to display in the Scroll View
+    public List<GameObject> items; 
 
-    public float itemSpacing = 200f; // Spacing between each item in the ScrollView
+    private float itemSpacing = 120f; 
 
     
     void Start()
@@ -31,17 +32,16 @@ public class InventoryManagement : MonoBehaviour
         string[] PriceList = {"L 100","L 200","L 300", "L 200", "L 500", "L 200", "L 150" };
         
 
-        // Loop through each item in the list
+      
         for (int i = 0; i < items.Count; i++)
         {
             // Calculate the position for the new item based on index
-            float yOffset = i *2* itemSpacing; // Adjust this calculation based on your layout needs
-
+            float yOffset = i *2* itemSpacing; 
             Texture previewTexture = AssetPreview.GetAssetPreview(items[i]);
 
 
-            // Instantiate a new content item from the prefab
-            GameObject newItem = Instantiate(contentPrefab, contentParent);
+          
+            GameObject newItem = Instantiate(marketentry, entryParent);
             TextMeshProUGUI[] allTextMeshProChildren = newItem.GetComponentsInChildren<TextMeshProUGUI>();
             
 
@@ -68,7 +68,6 @@ public class InventoryManagement : MonoBehaviour
 
             
 
-            // Optionally, you can add more customization to the new item here
         }
 
     }

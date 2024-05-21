@@ -10,11 +10,26 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/UserView.unity
-    guid: 7db72560a65abcd4fa98be7cb9870bfc
+    guid: 6b3325e2981466f4d87bce237fba6d13
   - enabled: 1
     path: Assets/Scenes/AvatarPhone.unity
     guid: ef10ec5faf57db04aa74c547dc0b9ce4
   - enabled: 1
     path: Assets/Scenes/VirtualMarket.unity
     guid: 04f562bad9cc6d04390a899d9ab23c3d
+  - enabled: 1
+    path: Assets/Scenes/VirtualEventSetup.unity
+    guid: 5a6496c52c2c3c84cba10dbf9e60487f
+  - enabled: 1
+    path: Assets/Scenes/UserBuy.unity
+    guid: bc64d8d7ef0b61e4c96b24daf1144739
+  - enabled: 1
+    path: Assets/Scenes/UserSell.unity
+    guid: 1d9f9e614df439c49b52e845aed39372
+  - enabled: 1
+    path: Assets/Scenes/VirtualEventLiveStream.unity
+    guid: 5876e9e4c29024f49a3d0054fe68c162
+  - enabled: 1
+    path: Assets/Scenes/VirtualEventMusic.unity
+    guid: 2237dbab6057efc40a770d4c2ec4168f
   m_configObjects: {}
