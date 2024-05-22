@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    public AudioClip[] musicTracks;
+    private AudioClip[] musicTracks;
     private AudioSource audioSource;
     private int TrackIndex = 0;
 
     void Start()
     {
-        // Ensure the GameObject has an AudioSource component
+        musicTracks = Resources.LoadAll<AudioClip>("Music");
+      
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -22,6 +24,8 @@ public class MusicController : MonoBehaviour
             PlayTrack(TrackIndex);
         }
     }
+
+  
 
     void Update()
     {

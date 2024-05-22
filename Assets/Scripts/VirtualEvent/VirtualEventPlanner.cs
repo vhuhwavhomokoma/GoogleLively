@@ -19,6 +19,7 @@ public class VirtualEventPlanner : MonoBehaviour
 
     public TMP_InputField time;
 
+
     private bool checkstream = false;
 
     private bool checkmusic = false;
@@ -70,7 +71,9 @@ public class VirtualEventPlanner : MonoBehaviour
         if (eventName.text!="" || date.text!="" || time.text !="")
         {
             if (checkstream)
-            {
+            {    string url_value = livestreamurl.GetComponent<TMP_InputField>().text;
+               
+                PlayerPrefs.SetString("UserInput",url_value);
                 SceneManager.LoadScene(7);
             }
 
@@ -80,7 +83,7 @@ public class VirtualEventPlanner : MonoBehaviour
             }
 
 
-
+            
         }
       
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Windows;
 
 public class AccountManagement : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class AccountManagement : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(GetRequest(apiUrl));
+        StartCoroutine(GetRequest(apiUrl)); //concurrency
+        
     }
 
     
@@ -22,8 +24,20 @@ public class AccountManagement : MonoBehaviour
         Application.OpenURL("https://www.example.com");
     }
 
+
+    public string extractAmount(string jsonstring)
+    {
+        char[] charsToTrim = { '[', ']', '{', '}' };
+        string result = jsonstring.Trim(charsToTrim);
+        string[] strings = result.Split(":");
+
+        return strings[4];
+    }
+
+ 
+
     //Retrieve the value of the account balance from the databse
-    IEnumerator GetRequest(string url)
+    public IEnumerator GetRequest(string url)
     {
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
 
@@ -33,8 +47,10 @@ public class AccountManagement : MonoBehaviour
         if (webRequest.result != UnityWebRequest.Result.ConnectionError)
         {
             string recv = webRequest.downloadHandler.text;
-           
-            accountbalance.text = "L 100";
+            
+            accountbalance.text = "Available Balance: L " + extractAmount(recv);
+            PlayerPrefs.SetString("UserAmount", extractAmount(recv));
+
         }
     }
 }
