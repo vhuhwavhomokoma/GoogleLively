@@ -7,7 +7,7 @@ public class MusicController : MonoBehaviour
 {
     private AudioClip[] musicTracks;
     private AudioSource audioSource;
-    private int TrackIndex = 0;
+    private int TrackPos = 0;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class MusicController : MonoBehaviour
 
         if (musicTracks.Length > 0)
         {
-            PlayTrack(TrackIndex);
+            PlayTrack(TrackPos);
         }
     }
 
@@ -31,12 +31,12 @@ public class MusicController : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            NextTrack();
+            PlayNextTrack();
         }
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            NextTrack();
+            PlayNextTrack();
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -48,25 +48,25 @@ public class MusicController : MonoBehaviour
 
     }
 
-    void PlayTrack(int index)
+    void PlayTrack(int songpos)
     {
-        if (index >= 0 && index < musicTracks.Length)
+        if (songpos >= 0 && songpos < musicTracks.Length)
         {
-            audioSource.clip = musicTracks[index];
+            audioSource.clip = musicTracks[songpos];
             audioSource.Play();
         }
     }
 
-    public void NextTrack()
+    public void PlayNextTrack()
     {
-        TrackIndex = (TrackIndex + 1) % musicTracks.Length;
-        PlayTrack(TrackIndex);
+        TrackPos = (TrackPos + 1) % musicTracks.Length;
+        PlayTrack(TrackPos);
     }
 
     public void PlayPreviousTrack()
     {
-        TrackIndex = (TrackIndex - 1 + musicTracks.Length) % musicTracks.Length;
-        PlayTrack(TrackIndex);
+        TrackPos = (TrackPos - 1 + musicTracks.Length) % musicTracks.Length;
+        PlayTrack(TrackPos);
     }
 
     
