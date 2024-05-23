@@ -8,12 +8,12 @@ using UnityEngine.Windows;
 public class AccountManagement : MonoBehaviour
 {
     public TextMeshProUGUI accountbalance; // Account balace displayed on UI
-    private string apiUrl = "https://libraryweb4.azurewebsites.net/api/Your"; //API Gateway to database
+    private string url = "https://libraryweb4.azurewebsites.net/api/Your"; //API Gateway to database
     
 
     void Start()
     {
-        StartCoroutine(GetRequest(apiUrl)); //concurrency
+        StartCoroutine(Get(url)); //concurrency
         
     }
 
@@ -37,19 +37,19 @@ public class AccountManagement : MonoBehaviour
  
 
     //Retrieve the value of the account balance from the databse
-    public IEnumerator GetRequest(string url)
+    public IEnumerator Get(string url)
     {
-        UnityWebRequest webRequest = UnityWebRequest.Get(url);
+        UnityWebRequest Request = UnityWebRequest.Get(url);
 
-        yield return webRequest.SendWebRequest();
+        yield return Request.SendWebRequest();
 
-        //Check for errors in connection
-        if (webRequest.result != UnityWebRequest.Result.ConnectionError)
+        
+        if (Request.result != UnityWebRequest.Result.ConnectionError)
         {
-            string recv = webRequest.downloadHandler.text;
+            string recv = Request.downloadHandler.text;
             
             accountbalance.text = "Available Balance: L " + extractAmount(recv);
-            PlayerPrefs.SetString("UserAmount", extractAmount(recv));
+           
 
         }
     }

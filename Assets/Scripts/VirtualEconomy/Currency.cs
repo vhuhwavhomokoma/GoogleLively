@@ -3,32 +3,32 @@
 public class Currency
 {
     //Virtual Currency management
-    private int goldCoins;
+    private int LivelyCoins;
 
     //Currency constructor
     public Currency(int coins)
     {
-        goldCoins = coins;
+        LivelyCoins = coins;
     }
 
     //Getter method
     public int GetCoins()
     {
-        return goldCoins;
+        return LivelyCoins;
     }
 
     //Add to currency
-    public void AddGoldCoins(int amount)
+    public void Add(int amount)
     {
-        goldCoins += amount;
+        LivelyCoins = LivelyCoins + amount;
     }
 
     //Subtract from currency
-    public bool SubtractGoldCoins(int amount)
+    public bool Subtract(int amount)
     {
-        if (goldCoins >= amount)
+        if (LivelyCoins >= amount)
         {
-            goldCoins -= amount;
+            LivelyCoins = LivelyCoins + amount;
             return true;
         }
         else

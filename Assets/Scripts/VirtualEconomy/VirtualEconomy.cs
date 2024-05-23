@@ -44,7 +44,7 @@ public class VirtualEconomy : MonoBehaviour
         string pricetext = textMeshProUGUI.text;
         int price = int.Parse(pricetext.Substring(2));
         Currency currencyManager = new Currency(accountbalance);
-        currencyManager.AddGoldCoins(price);
+        currencyManager.Add(price);
         if (removeSoldInventory())
         {
             StartCoroutine(updateDBentry(currencyManager.GetCoins()));
@@ -117,7 +117,7 @@ public class VirtualEconomy : MonoBehaviour
         Currency currencyManager = new Currency(accountbalance);
         
 
-        if (currencyManager.SubtractGoldCoins(price))
+        if (currencyManager.Subtract(price))
         {
 
             accessPurchasedInventory();
