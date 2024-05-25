@@ -12,7 +12,7 @@ using Button = UnityEngine.UI.Button;
 public class VirtualEconomy : MonoBehaviour
 {
 
-    private int accountbalance = 600;
+    private int accountbalance;
 
     public GameObject MainObject;
 
@@ -28,7 +28,7 @@ public class VirtualEconomy : MonoBehaviour
 
     void Start()
     {
-
+        StartCoroutine(GetRequest("https://libraryweb4.azurewebsites.net/api/Your")); //concurrency
 
         if (InventoryManager.inventoryInstance != null)
         {
@@ -41,7 +41,7 @@ public class VirtualEconomy : MonoBehaviour
 
     public void Purchase()
     {
-        StartCoroutine(GetRequest("https://libraryweb4.azurewebsites.net/api/Your")); //concurrency
+        
         string pricetext = textMeshProUGUI.text;
         int price = int.Parse(pricetext.Substring(2));
         bool status = Buy(price);
@@ -49,6 +49,7 @@ public class VirtualEconomy : MonoBehaviour
         {
             UnityEngine.UI.Image buttonImage = BuyButton.GetComponent<UnityEngine.UI.Image>();
             buttonImage.color = Color.green;
+            StartCoroutine(GetRequest("https://libraryweb4.azurewebsites.net/api/Your")); //concurrency
         }
        
 
@@ -56,7 +57,7 @@ public class VirtualEconomy : MonoBehaviour
 
     public void Sell()
     {
-        StartCoroutine(GetRequest("https://libraryweb4.azurewebsites.net/api/Your")); //concurrency
+        
         string pricetext = textMeshProUGUI.text;
         int price = int.Parse(pricetext.Substring(2));
         Currency currencyManager = new Currency(accountbalance);
@@ -65,7 +66,7 @@ public class VirtualEconomy : MonoBehaviour
         {
             StartCoroutine(updateDBentry(currencyManager.GetCoins()));
             Destroy(MainObject);
-
+            StartCoroutine(GetRequest("https://libraryweb4.azurewebsites.net/api/Your")); //concurrency
         }
 
 
