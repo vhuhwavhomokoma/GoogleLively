@@ -28,7 +28,7 @@ public class Currency
     {
         if (LivelyCoins >= amount)
         {
-            LivelyCoins = LivelyCoins + amount;
+            LivelyCoins = LivelyCoins - amount;
             return true;
         }
         else

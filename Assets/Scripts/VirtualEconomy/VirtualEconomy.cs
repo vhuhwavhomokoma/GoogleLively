@@ -5,12 +5,14 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Networking;
 
+using Button = UnityEngine.UI.Button;
+
 
 
 public class VirtualEconomy : MonoBehaviour
 {
 
-    private int accountbalance;
+    private int accountbalance = 600;
 
     public GameObject MainObject;
 
@@ -18,13 +20,21 @@ public class VirtualEconomy : MonoBehaviour
 
     public TextMeshProUGUI itemName;
 
-    public List<GameObject> inventoryitems;
+    private GameObject[] inventoryitems;
 
-   
+    public Button BuyButton;
+
+
 
     void Start()
     {
-        
+
+
+        if (InventoryManager.inventoryInstance != null)
+        {
+            var items = InventoryManager.inventoryInstance.items;
+            // Use items as needed
+        }
 
 
     }
@@ -35,6 +45,12 @@ public class VirtualEconomy : MonoBehaviour
         string pricetext = textMeshProUGUI.text;
         int price = int.Parse(pricetext.Substring(2));
         bool status = Buy(price);
+        if (status)
+        {
+            UnityEngine.UI.Image buttonImage = BuyButton.GetComponent<UnityEngine.UI.Image>();
+            buttonImage.color = Color.green;
+        }
+       
 
     }
 
@@ -49,57 +65,44 @@ public class VirtualEconomy : MonoBehaviour
         {
             StartCoroutine(updateDBentry(currencyManager.GetCoins()));
             Destroy(MainObject);
-            
+
         }
-       
-        
+
+
     }
 
     private void accessPurchasedInventory()
     {
         try
         {
-            
-            string destinationFolder = "Assets/Prefabs/UserInventory";
-
+            inventoryitems = Resources.LoadAll<GameObject>("MarketCatalogue");
 
             foreach (GameObject item in inventoryitems)
             {
                 if (item.name == itemName.text)
                 {
-                    GameObject purchasedObject = Instantiate(item);
-                    string destinationPath = destinationFolder + "/" + itemName.text + ".prefab";
-                    PrefabUtility.SaveAsPrefabAsset(purchasedObject, destinationPath);
-
-               
-                    DestroyImmediate(purchasedObject);
-
-                    
-                    AssetDatabase.Refresh();
+                    InventoryManager.inventoryInstance.AddItem(item);
 
                 }
             }
 
-        }catch (System.Exception)
+        }
+        catch (System.Exception)
         {
-         
+
         }
 
-}
+    }
 
     private bool removeSoldInventory()
     {
-        string prefabsFolder = "Assets/Prefabs/UserInventory";
-      
-        string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { prefabsFolder });
+        var inventoryItems = InventoryManager.inventoryInstance.items;
 
-        foreach (string guid in guids)
+        foreach (GameObject prefab in inventoryItems)
         {
-            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
-            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
             if (prefab != null && prefab.name == itemName.text)
             {
-                AssetDatabase.DeleteAsset(assetPath);
+                InventoryManager.inventoryInstance.RemoveItem(prefab);
                 return true;
             }
         }
@@ -112,17 +115,17 @@ public class VirtualEconomy : MonoBehaviour
 
     public bool Buy(int price)
     {
-       
-        
+
+
         Currency currencyManager = new Currency(accountbalance);
-        
+
 
         if (currencyManager.Subtract(price))
         {
 
             accessPurchasedInventory();
             StartCoroutine(updateDBentry(currencyManager.GetCoins()));//concurrency
-            
+
 
             return true; //Purchase successful
         }
@@ -138,26 +141,23 @@ public class VirtualEconomy : MonoBehaviour
     {
         string url = "https://libraryweb4.azurewebsites.net/api/Your/1";
 
-        
-            string jsonData = "{\"personID\": 1,\"firstName\": \"Vhuhwavho\",\"lastName\": \"Mokoma\",\"amount\": " + newamount + "}"; ;
+
+        string jsonData = "{\"personID\": 1,\"firstName\": \"Vhuhwavho\",\"lastName\": \"Mokoma\",\"amount\": " + newamount + "}"; ;
 
 
-            UnityWebRequest request = UnityWebRequest.Put(url, jsonData);
+        UnityWebRequest request = UnityWebRequest.Put(url, jsonData);
 
-            request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Content-Type", "application/json");
 
 
-            yield return request.SendWebRequest();
+        yield return request.SendWebRequest();
 
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError(request.error);
-            }
-            else
-            {
-                Debug.Log("PUT request successful");
-            }
-        
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError(request.error);
+        }
+
+
 
     }
 
@@ -184,7 +184,7 @@ public class VirtualEconomy : MonoBehaviour
             string recv = webRequest.downloadHandler.text;
 
             accountbalance = int.Parse(extractAmount(recv));
-          
+
 
         }
     }

@@ -10,40 +10,42 @@ public class InventoryManagement : MonoBehaviour
 
 
     public GameObject marketentry;
-    
-    public Transform entryParent; 
 
-    public List<GameObject> items; 
+    public Transform entryParent;
 
-    private float itemSpacing = 120f; 
 
-    
+
+    private float itemSpacing = 120f;
+
+
     void Start()
     {
         PopulateScrollView();
-        
-       
+
+
     }
-   
+
 
 
     void PopulateScrollView()
     {
-        string[] PriceList = {"L 100","L 200","L 300", "L 200", "L 500", "L 200", "L 150" };
-        
+        string[] PriceList = { "L 100", "L 200", "L 300", "L 200", "L 500", "L 200", "L 150" };
 
-      
-        for (int i = 0; i < items.Count; i++)
+        GameObject[] items = Resources.LoadAll<GameObject>("MarketCatalogue");
+        Texture[] previewItems = Resources.LoadAll<Texture>("AssetPreviews");
+
+
+        for (int i = 0; i < items.Length; i++)
         {
             // Calculate the position for the new item based on index
-            float yOffset = i *2* itemSpacing; 
-            Texture previewTexture = AssetPreview.GetAssetPreview(items[i]);
+            float yOffset = i * 2 * itemSpacing;
+            Texture previewTexture = previewItems[i];
 
 
-          
+
             GameObject newItem = Instantiate(marketentry, entryParent);
             TextMeshProUGUI[] allTextMeshProChildren = newItem.GetComponentsInChildren<TextMeshProUGUI>();
-            
+
 
 
             allTextMeshProChildren[0].text = items[i].name;
@@ -66,7 +68,7 @@ public class InventoryManagement : MonoBehaviour
                 itemRect.anchoredPosition = new Vector2(-300, yOffset);
             }
 
-            
+
 
         }
 

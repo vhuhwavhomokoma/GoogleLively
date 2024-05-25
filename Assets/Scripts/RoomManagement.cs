@@ -20,9 +20,15 @@ public class RoomManagement : MonoBehaviour
 
     public Transform stoveposition;
 
-   
+
     void Start()
     {
+
+        if (InventoryManager.inventoryInstance != null)
+        {
+            var items = InventoryManager.inventoryInstance.items;
+            // Use items as needed
+        }
         populateRoom();
     }
 
@@ -30,9 +36,9 @@ public class RoomManagement : MonoBehaviour
     private void populateRoom()
     {
 
-        GameObject[] inventoryItems = Resources.LoadAll<GameObject>("UserInventory");
+        var inventoryItems = InventoryManager.inventoryInstance.items;
 
-        for (int i = 0; i < inventoryItems.Length; i++)
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
             if (inventoryItems[i].CompareTag("Cupboard"))
             {

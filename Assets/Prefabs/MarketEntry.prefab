@@ -283,14 +283,7 @@ MonoBehaviour:
   MainObject: {fileID: 8132748498129622376}
   textMeshProUGUI: {fileID: 6227558425273593885}
   itemName: {fileID: 110602871784568641}
-  inventoryitems:
-  - {fileID: 5626706108481955418, guid: 355f0f3f8c2463f4d8bed401784f063f, type: 3}
-  - {fileID: 8683862293970279672, guid: b9f258a086096d24aa7861fa20deed65, type: 3}
-  - {fileID: 1830421572321717154, guid: af872b04269986143906a126ca9ff444, type: 3}
-  - {fileID: 1717429913565124302, guid: 29eb9cdec523f4944b46fcfae81dc9c8, type: 3}
-  - {fileID: 3529715222844787653, guid: ce0bc08e90169b64a82b286ba042f677, type: 3}
-  - {fileID: 1929367146843536, guid: 4f9e8d17d08a3d346909d5dc0f404d80, type: 3}
-  - {fileID: 1963118065990805654, guid: 452921da7fe17904da8c1d34c235dee4, type: 3}
+  BuyButton: {fileID: 8392793380598917148}
 --- !u!1 &3870431050004196227
 GameObject:
   m_ObjectHideFlags: 0
