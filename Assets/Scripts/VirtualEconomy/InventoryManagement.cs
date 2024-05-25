@@ -30,6 +30,7 @@ public class InventoryManagement : MonoBehaviour
     void PopulateScrollView()
     {
         string[] PriceList = { "L 100", "L 200", "L 300", "L 200", "L 500", "L 200", "L 150" };
+        
 
         GameObject[] items = Resources.LoadAll<GameObject>("MarketCatalogue");
         Texture[] previewItems = Resources.LoadAll<Texture>("AssetPreviews");
@@ -41,6 +42,7 @@ public class InventoryManagement : MonoBehaviour
             float yOffset = i * 2 * itemSpacing;
             Texture previewTexture = previewItems[i];
 
+            
 
 
             GameObject newItem = Instantiate(marketentry, entryParent);

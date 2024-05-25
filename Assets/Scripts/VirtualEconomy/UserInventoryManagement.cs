@@ -19,13 +19,28 @@ public class UserInventoryManagement : MonoBehaviour
         PopulateScrollView();
     }
 
+    private Dictionary<string,string> PriceGenerate(string[] PriceList){
+        Texture[] previewItems = Resources.LoadAll<Texture>("AssetPreviews");
+
+        Dictionary<string, string> PriceItem = new Dictionary<string, string>();
+
+        for (int m = 0; m < previewItems.Length; m++)
+        {
+            PriceItem[previewItems[m].name] = PriceList[m];
+
+        }
+
+        return PriceItem;
+
+}
+
     void PopulateScrollView()
     {
         string[] PriceList = { "L 100", "L 200", "L 300", "L 200", "L 500", "L 200", "L 150" };
 
         var inventoryItems = InventoryManager.inventoryInstance.items;
         Texture[] previewItems = Resources.LoadAll<Texture>("AssetPreviews");
-
+        Dictionary<string, string> GenPriceList = PriceGenerate(PriceList);
 
 
         for (int i = 0; i < inventoryItems.Count; i++)
@@ -58,7 +73,7 @@ public class UserInventoryManagement : MonoBehaviour
             allTextMeshProChildren[0].fontSize = 12;
 
 
-            allTextMeshProChildren[2].text = PriceList[i];
+            allTextMeshProChildren[2].text = GenPriceList[previewTexture.name];
             allTextMeshProChildren[2].color = Color.white;
             allTextMeshProChildren[2].fontSize = 18;
 
