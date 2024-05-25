@@ -19,7 +19,7 @@ public class UserInventoryManagement : MonoBehaviour
         PopulateScrollView();
     }
 
-    private Dictionary<string,string> PriceGenerate(string[] PriceList){
+    public Dictionary<string,string> PriceGenerate(string[] PriceList){
         Texture[] previewItems = Resources.LoadAll<Texture>("AssetPreviews");
 
         Dictionary<string, string> PriceItem = new Dictionary<string, string>();

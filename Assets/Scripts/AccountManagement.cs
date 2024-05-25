@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -21,7 +22,7 @@ public class AccountManagement : MonoBehaviour
     //Transition to payment gate
     public void OpenURL()
     {
-        Application.OpenURL("https://www.example.com");
+        Application.OpenURL("https://libraryweb-1.azurewebsites.net");
     }
 
 
@@ -51,6 +52,10 @@ public class AccountManagement : MonoBehaviour
             accountbalance.text = "Available Balance: L " + extractAmount(recv);
            
 
+        }
+        else
+        {
+            Debug.LogError(Request.error);
         }
     }
 }
