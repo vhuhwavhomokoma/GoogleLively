@@ -7,7 +7,7 @@ public class SignIn : MonoBehaviour
 {
     public void User_signin()
     {
-        //Loading the next scene after signing int
+        //Loading the next scene after signing in
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }

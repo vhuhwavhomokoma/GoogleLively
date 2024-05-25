@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - EntryDescription
+  - EntryPrice
+  - Fridge
+  - Cupboard
+  - Canvas1
+  - Canvas2
+  - Stove
+  - Chair
+  - Cabinet
+  - urlvalue
   layers:
   - Default
   - TransparentFX
