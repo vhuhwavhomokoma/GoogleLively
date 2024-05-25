@@ -22,25 +22,13 @@ public class UserInventoryManagement : MonoBehaviour
     void PopulateScrollView()
     {
         string[] PriceList = { "L 100", "L 200", "L 300", "L 200", "L 500", "L 200", "L 150" };
-        string prefabsFolder = "Assets/Prefabs/UserInventory";
-        List<GameObject> items = new List<GameObject>();
-        string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { prefabsFolder });
-
-        foreach (string guid in guids)
-        {
-            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
-            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
-            if (prefab != null)
-            {
-                items.Add(prefab);
-            }
-        }
-
-
-  
-    
         
-        for (int i = 0; i < items.Count; i++)
+        GameObject[] items = Resources.LoadAll<GameObject>("UserInventory");
+
+
+
+
+        for (int i = 0; i < items.Length; i++)
         {
             // Calculate the position for the new item based on index
             float yOffset = i * 2 * itemSpacing; 

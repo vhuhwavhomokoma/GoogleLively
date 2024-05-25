@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowAvatar : MonoBehaviour
 {
     public GameObject player; //Access user avatar
-    private Vector3 offset = new Vector3(-3, 20, -20); //Create offset for camera to follow user from
+    private Vector3 offset = new Vector3(-3, 28, -20); //Create offset for camera to follow user from
     public float smoothSpeed = 0.125f; //smoothing speed for camera motion
 
     void Start()
@@ -13,7 +13,7 @@ public class FollowAvatar : MonoBehaviour
 
     }
 
-   //Update camera position to follow player
+    //Update camera position to follow player
     void LateUpdate()
     {
         Vector3 cameraPosition = Vector3.Lerp(transform.position, player.transform.position + offset, smoothSpeed);
